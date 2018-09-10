@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      herbarium_image:     'fa fa-file-text-o'
+    select_type:
+      herbarium_image:
+        # TODO: translate `human_name` into Spanish
+        description:        "Herbarium image trabajos"
+        name:               "Herbarium Image"
+        # TODO: translate `human_name` into Spanish

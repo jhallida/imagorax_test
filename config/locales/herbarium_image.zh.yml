@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      herbarium_image:     'fa fa-file-text-o'
+    select_type:
+      herbarium_image:
+        # TODO: translate `human_name` into Chinese
+        description:        "Herbarium image 作品"
+        name:               "Herbarium Image"
+        # TODO: translate `human_name` into Chinese

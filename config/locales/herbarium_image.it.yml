@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      herbarium_image:     'fa fa-file-text-o'
+    select_type:
+      herbarium_image:
+        description:        "Herbarium image opere"
+        name:               "Herbarium Image"
