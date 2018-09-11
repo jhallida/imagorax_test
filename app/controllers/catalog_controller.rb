@@ -85,6 +85,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
     config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
     config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
+    # add Imago-specific fields to show up in search results
+    config.add_index_field solr_name("scientific_name", :stored_searchable), label: "Scientific Name", helper_method: :index_field_link, field_name: 'scientific_name'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -105,6 +107,47 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable)
     config.add_show_field solr_name("identifier", :stored_searchable)
+    # add Imago fields here
+    config.add_show_field solr_name("collection_code", :stored_searchable)
+    config.add_show_field solr_name("basis_of_record", :stored_searchable), label: "Basis Of Record"
+    config.add_show_field solr_name("catalog_number", :stored_searchable), label: "Catalog Number"
+    config.add_show_field solr_name("other_catalog_numbers", :stored_searchable), label: "Other Catalog Numbers"
+    config.add_show_field solr_name("continent", :stored_searchable), label: "Continent"
+    config.add_show_field solr_name("country", :stored_searchable), label: "Country"
+    config.add_show_field solr_name("state_province", :stored_searchable), label: "State / Province"
+    config.add_show_field solr_name("county", :stored_searchable), label: "County"
+    config.add_show_field solr_name("higher_geography", :stored_searchable), label: "Higher Geography"
+    config.add_show_field solr_name("locality", :stored_searchable), label: "Locality"
+    config.add_show_field solr_name("decimal_latitude", :stored_searchable), label: "Decimal Latitude"
+    config.add_show_field solr_name("decimal_longitude", :stored_searchable), label: "Decimal Longitude"
+    #new for paleo
+    config.add_show_field solr_name("group", :stored_searchable), label: "Group"
+    config.add_show_field solr_name("formation", :stored_searchable), label: "Formation"
+    config.add_show_field solr_name("dwcmember", :stored_searchable), label: "Member"
+    config.add_show_field solr_name("bed", :stored_searchable), label: "Bed"
+    config.add_show_field solr_name("earliest_period_or_lowest_system", :stored_searchable), label: "Earliest Period Or Lowest System"
+    config.add_show_field solr_name("latest_period_or_highest_system", :stored_searchable), label: "Latest Period Or Highest System"
+    config.add_show_field solr_name("earliest_age_or_lowest_stage", :stored_searchable), label: "Earliest Age Or Lowest Stage"
+    config.add_show_field solr_name("latest_age_or_highest_stage", :stored_searchable), label: "Latest Age Or Highest Stage"
+    #new for self deposit
+    config.add_show_field solr_name("institution_code", :stored_searchable), label: "Institution Code"
+    config.add_show_field solr_name("occurrence_id", :stored_searchable), label: "Occurrence ID"
+    config.add_show_field solr_name("country_code", :stored_searchable), label: "Country Code"
+    config.add_show_field solr_name("taxon_rank", :stored_searchable), label: "Taxon Rank"
+    config.add_show_field solr_name("water_body", :stored_searchable), label: "Water Body"
+    config.add_show_field solr_name("location_remarks", :stored_searchable), label: "Location Remarks"
+    config.add_show_field solr_name("geodetic_datum", :stored_searchable), label: "Geodetic Datum"
+
+    config.add_show_field solr_name("kingdom", :stored_searchable), label: "Kingdom"
+    config.add_show_field solr_name("phylum", :stored_searchable), label: "Phylum or Division"
+    config.add_show_field solr_name("dwcclass", :stored_searchable), label: "Class"
+    config.add_show_field solr_name("order", :stored_searchable), label: "Order"
+    config.add_show_field solr_name("family", :stored_searchable), label: "Family"
+    config.add_show_field solr_name("genus", :stored_searchable), label: "Genus"
+    config.add_show_field solr_name("specific_epithet", :stored_searchable), label: "Specific Epithet"
+    config.add_show_field solr_name("infraspecific_epithet", :stored_searchable), label: "Infraspecific Epithet"
+    config.add_show_field solr_name("scientific_name", :stored_searchable), label: "Scientific Name"
+    config.add_show_field solr_name("type_status", :stored_searchable), label: "Type Status"
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
