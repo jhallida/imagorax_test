@@ -143,8 +143,9 @@ module Cbrc
               #add new image
               file_set = ::FileSet.new
               file_set_actor = Hyrax::Actors::FileSetActor.new(file_set, owner)
-              file_set_actor.create_metadata(gf, visibility: gf.visibility)
+              file_set_actor.create_metadata(visibility: gf.visibility)
               file_set_actor.create_content(File.open(image_path))
+              file_set_actor.attach_to_work(gf)
 
               if gf.save
                 print "Updated #{cat_num}.\n"
